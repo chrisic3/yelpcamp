@@ -30,6 +30,9 @@ app.use(require("express-session")({
 app.use(methodOverride("_method"));
 app.use(flash());
 
+// MOMENT REQUIRE
+app.locals.moment = require("moment");
+
 // PASSPORT CONFIG
 app.use(passport.initialize());
 app.use(passport.session());
