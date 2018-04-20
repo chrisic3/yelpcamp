@@ -17,7 +17,7 @@ router.get("/", function(req, res) {
 });
 
 //CREATE - add new campground to DB
-router.post("/", middleware.isLoggedIn, function(req, res) {
+router.post("/", middleware.isLoggedIn, middleware.isSafe, function(req, res) {
     // get data from form and add to campgrounds array
     var name = req.body.name;
     var price = req.body.price;
@@ -72,7 +72,7 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res) 
 });
 
 // UPDATE CAMPGROUND ROUTE
-router.put("/:id", middleware.checkCampgroundOwnership, function(req, res) {
+router.put("/:id", middleware.checkCampgroundOwnership, middleware.isSafe, function(req, res) {
     // find and update correct campground
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground) {
         if (err) {
