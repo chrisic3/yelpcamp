@@ -57,7 +57,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
 };
 
 middlewareObj.isSafe = function(req, res, next) {
-    if (req.body.image.match(/^https:\/\/images\.unsplash\.com\/.*/)) {
+    if (req.body.campground.image.match(/^https:\/\/images\.unsplash\.com\/.*/)) {
       next();
     } else {
       req.flash("error", "Only images from images.unsplash.com allowed.");
